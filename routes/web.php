@@ -19,3 +19,7 @@ Route::group(['prefix' => "user"], function () {
     Route::get('/login', "UserController@login");
     Route::post('/logar', "UserController@logar");
 });
+
+Route::group(['prefix' => "admin", 'middleware' => "auth"], function () {
+    Route::get("/home", "HomeController@admin");
+});
