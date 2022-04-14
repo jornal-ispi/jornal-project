@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JORNAL ISPI</title>
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap5/css/bootstrap.css') }}" />
 </head>
 
 <body>
-@yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
+
 </body>
+<script src="{{ asset('assets/bootstrap5/js/bootstrap.js') }}"></script>
+<script src="{{ asset('assets/bootstrap5/js/bootstrap.bundle.js') }}"></script>
 
 </html>
