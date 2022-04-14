@@ -27,10 +27,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <input class="form-control" placeholder="{{ __('E-mail') }}" name="email" type="email"
+                        <input class="form-control" placeholder="{{ __('Nome de Usuário') }}" name="username" type="username"
                             autofocus="">
-                        @if ($errors->has('email'))
-                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                        @if ($errors->has('username'))
+                            <span class="text-danger">{{ $errors->first('username') }}</span>
                         @endif
                     </div>
                 </div>

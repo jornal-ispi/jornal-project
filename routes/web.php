@@ -17,4 +17,5 @@ Route::get('/', "HomeController@index");
 
 Route::group(['prefix' => "user"], function () {
     Route::get('/login', "UserController@login");
+    Route::post('/logar', "UserController@logar");
 });
