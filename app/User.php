@@ -19,4 +19,19 @@ class User extends Authenticatable
         'codigo',
         'estado',
     ];
+
+    public function mensagem_user_send()
+    {
+        return $this->hasMany(Mensagem::class, 'id_user_send', 'id');
+    }
+
+    public function mensagem_user_receive()
+    {
+        return $this->hasMany(Mensagem::class, 'id_user_receive', 'id');
+    }
+
+    public function noticias()
+    {
+        return $this->hasMany(Noticia::class, 'id_user_create', 'id');
+    }
 }
