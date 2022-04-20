@@ -37,7 +37,7 @@ Route::group(['prefix' => "noticia"], function () {
     Route::put('/update/{id}', "NoticiaController@update");
 });
 
-Route::group(['prefix' => "noticia"], function () {
+Route::group(['prefix' => "chat"], function () {
     Route::get('/list', "NoticiaController@index");
     Route::get('/create', "NoticiaController@create");
     Route::post('/store', "UserController@store");
