@@ -14,17 +14,8 @@ class HomeController extends Controller
             'type' => "home",
         ];
 
-        return view('home', $data);
-    }
-
-    public function admin()
-    {
-        $data = [
-            'title' => "Jornal ISPI Administrador",
-            'menu' => "Admin",
-            'type' => "home",
-        ];
-
         return view('admin.home', $data);
     }
+
+
 }

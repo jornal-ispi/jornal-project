@@ -16,7 +16,7 @@
             <div class="menu">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">jornal ISPI</a>
+                        <a class="navbar-brand" href="#">jornal ISPI Administrador</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,8 @@
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
                                 <a class="nav-link @if ($menu=='Home' ) active @endif" aria-current="page" href="/">Home</a>
-                                <a class="nav-link" aria-current="page" href="/user/login">Login</a>
+                                <a class="nav-link @if ($menu=='Portefólio' ) active @endif" aria-current="page" href="/portefolio">Portefólio</a>
+                                <a class="nav-link" href="/user/logout" tabindex="-1" aria-disabled="true">Logout</a>
                             </div>
                         </div>
                     </div>
