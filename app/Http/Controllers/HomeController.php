@@ -14,8 +14,6 @@ class HomeController extends Controller
             'type' => "home",
         ];
 
-        return view('admin.home', $data);
+        return view("admin.home", $data);
     }
-
-
 }

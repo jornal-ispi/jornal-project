@@ -68,6 +68,6 @@
 
             {{ Form::close() }}
         </fieldset>
-        <a href="/">Voltar</a>
+
     </div>
 @endsection

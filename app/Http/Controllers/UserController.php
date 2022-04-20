@@ -37,7 +37,7 @@ class UserController extends Controller
 
         $credencials = $request->only('username', 'password');
         if (Auth::attempt($credencials)) {
-            return redirect()->route('admin');
+            return redirect()->route('home');
         } else {
             return back()->with(['error' => "Palavra-Passe Incorrecta"]);
         }

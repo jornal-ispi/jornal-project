@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "HomeController@index")->middleware('auth');
+Route::get('/', "HomeController@index")->name('home')->middleware('auth');
 
 Route::group(['prefix' => "user"], function () {
-    Route::get('/login', "UserController@login")->middleware('guest');
-    Route::post('/logar', "UserController@logar")->name('login');
-    Route::get('/logout', "UserController@logout");
+    Route::get('/login', "UserController@login")->name('login')->middleware('guest');
+    Route::post('/logar', "UserController@logar");
+    Route::get('/logout', "UserController@logout")->name('logout');
 });
