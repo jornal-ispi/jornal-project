@@ -25,7 +25,7 @@ class CreateNoticiasTable extends Migration
         });
 
         Schema::table('noticias', function (Blueprint $table) {
-            $table->foreign('id_user_create')->references('id')->on('usuarios')->onUpdate('cascade');
+            $table->foreign('id_user')->references('id')->on('usuarios')->onUpdate('cascade');
         });
     }
 
