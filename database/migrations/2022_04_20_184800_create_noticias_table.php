@@ -14,8 +14,18 @@ class CreateNoticiasTable extends Migration
     public function up()
     {
         Schema::create('noticias', function (Blueprint $table) {
-            $table->id();
+            $table->engine = "InnoDB";
+            $table->bigIncrements('id');
+            $table->bigInteger('id_user_create')->unsigned()->index();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->text('img')->nullable();
+            $table->string('estado');
             $table->timestamps();
+        });
+
+        Schema::table('noticias', function (Blueprint $table) {
+            $table->foreign('id_user_create')->references('id')->on('usuarios')->onUpdate('cascade');
         });
     }
 
