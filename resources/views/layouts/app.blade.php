@@ -25,9 +25,9 @@
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
                                 <a class="nav-link @if ($menu=='Home' ) active @endif" aria-current="page" href="/">Home</a>
-                                <a class="nav-link @if ($menu=='Usuários' ) active @endif" aria-current="page" href="/usuario">Usuários</a>
-                                <a class="nav-link @if ($menu=='Notícia' ) active @endif" aria-current="page" href="/noticia">Notícia</a>
-                                <a class="nav-link @if ($menu=='Chat' ) active @endif" aria-current="page" href="/chat">Chat</a>
+                                <a class="nav-link @if ($menu=='Usuários' ) active @endif" aria-current="page" href="/usuario/list">Usuários</a>
+                                <a class="nav-link @if ($menu=='Notícia' ) active @endif" aria-current="page" href="/noticia/list">Notícia</a>
+                                <a class="nav-link @if ($menu=='Chat' ) active @endif" aria-current="page" href="/chat/list">Chat</a>
                                 <a class="nav-link @if ($menu=='Portefólio' ) active @endif" aria-current="page"
                                     href="/portefolio">Portefólio</a>
                                 <a class="nav-link" href="/user/logout" tabindex="-1" aria-disabled="true">Logout</a>

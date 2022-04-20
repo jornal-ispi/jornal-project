@@ -20,3 +20,27 @@ Route::group(['prefix' => "user"], function () {
     Route::post('/logar', "UserController@logar");
     Route::get('/logout', "UserController@logout")->name('logout');
 });
+
+Route::group(['prefix' => "usuario"], function () {
+    Route::get('/list', "UserController@index");
+    Route::get('/create', "UserController@create");
+    Route::post('/store', "UserController@store");
+    Route::get('/edit/{id}', "UserController@edit");
+    Route::put('/update/{id}', "UserController@update");
+});
+
+Route::group(['prefix' => "noticia"], function () {
+    Route::get('/list', "NoticiaController@index");
+    Route::get('/create', "NoticiaController@create");
+    Route::post('/store', "UserController@store");
+    Route::get('/edit/{id}', "NoticiaController@edit");
+    Route::put('/update/{id}', "NoticiaController@update");
+});
+
+Route::group(['prefix' => "noticia"], function () {
+    Route::get('/list', "NoticiaController@index");
+    Route::get('/create', "NoticiaController@create");
+    Route::post('/store', "UserController@store");
+    Route::get('/edit/{id}', "NoticiaController@edit");
+    Route::put('/update/{id}', "NoticiaController@update");
+});
