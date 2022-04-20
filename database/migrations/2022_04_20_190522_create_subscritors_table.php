@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNoticiasTable extends Migration
+class CreateSubscritorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,17 @@ class CreateNoticiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('noticias', function (Blueprint $table) {
+        Schema::create('subscritors', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->bigIncrements('id');
             $table->bigInteger('id_user')->unsigned()->index();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->text('img')->nullable();
+            $table->string('email')->unique();
             $table->string('estado');
             $table->timestamps();
         });
 
-        Schema::table('noticias', function (Blueprint $table) {
-            $table->foreign('id_user_create')->references('id')->on('usuarios')->onUpdate('cascade');
+        Schema::table('subscritors', function (Blueprint $table) {
+            $table->foreign('id_user')->references('id')->on('usuarios')->onUpdate('cascade');
         });
     }
 
@@ -36,6 +34,6 @@ class CreateNoticiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('noticias');
+        Schema::dropIfExists('subscritors');
     }
 }

@@ -32,6 +32,11 @@ class User extends Authenticatable
 
     public function noticias()
     {
-        return $this->hasMany(Noticia::class, 'id_user_create', 'id');
+        return $this->hasMany(Noticia::class, 'id_user', 'id');
+    }
+
+    public function subscritors()
+    {
+        return $this->hasMany(Subscritor::class, 'id_user', 'id');
     }
 }
