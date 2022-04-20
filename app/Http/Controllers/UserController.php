@@ -51,10 +51,24 @@ class UserController extends Controller
 
     public function index()
     {
+        $data = [
+            'title' => "Usuários",
+            'menu' => "Usuário",
+            'type' => "admin",
+        ];
+
+        return view('admin.usuario.listar', $data);
     }
 
     public function create()
     {
+        $data = [
+            'title' => "Usuários",
+            'menu' => "Usuário",
+            'type' => "admin",
+        ];
+
+        return view('admin.usuario.create', $data);
     }
 
     public function store(Request $request)
@@ -63,6 +77,13 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        $data = [
+            'title' => "Usuários",
+            'menu' => "Usuário",
+            'type' => "admin",
+        ];
+
+        return view('admin.usuario.edit', $data);
     }
 
     public function update(Request $request, $id)
