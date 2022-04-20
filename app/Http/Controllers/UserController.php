@@ -48,4 +48,24 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function index()
+    {
+    }
+
+    public function create()
+    {
+    }
+
+    public function store(Request $request)
+    {
+    }
+
+    public function edit($id)
+    {
+    }
+
+    public function update(Request $request, $id)
+    {
+    }
 }
