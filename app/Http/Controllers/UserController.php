@@ -22,7 +22,7 @@ class UserController extends Controller
     public function logar(Request $request)
     {
         $request->validate([
-            'required' => ['required', 'string', 'min:6'],
+            'username' => ['required', 'string', 'min:6'],
             'password' => ['required', 'string'],
         ]);
 
@@ -43,5 +43,9 @@ class UserController extends Controller
         }
     }
 
-    
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }
