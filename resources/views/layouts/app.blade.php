@@ -8,6 +8,7 @@
     <title>{{ $title }}</title>
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap5/css/bootstrap.css') }}" />
+    
 </head>
 
 <body>
@@ -51,6 +52,7 @@
 
     <script src="{{ asset('assets/bootstrap5/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/bootstrap5/js/bootstrap.bundle.js') }}"></script>
+
 
     <script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script>
