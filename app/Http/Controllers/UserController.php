@@ -51,10 +51,12 @@ class UserController extends Controller
 
     public function index()
     {
+        $usuarios = User::where('acesso', '!=','admin')->paginate();
         $data = [
             'title' => "Usuários",
-            'menu' => "Usuário",
+            'menu' => "Usuários",
             'type' => "admin",
+            'getUsuarios'=>$usuarios,
         ];
 
         return view('admin.usuario.listar', $data);
