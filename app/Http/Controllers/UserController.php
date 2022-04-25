@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -51,12 +52,12 @@ class UserController extends Controller
 
     public function index()
     {
-        $usuarios = User::where('acesso', '!=','admin')->paginate();
+        $usuarios = User::where('acesso', '!=', 'admin')->paginate(10);
         $data = [
             'title' => "Usuários",
             'menu' => "Usuários",
             'type' => "admin",
-            'getUsuarios'=>$usuarios,
+            'getUsuarios' => $usuarios,
         ];
 
         return view('admin.usuario.listar', $data);
@@ -75,6 +76,31 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'username' => ['required', 'string', 'min:6', 'unique:usuarios,username'],
+            'acesso' => ['required', 'string'],
+            'estado' => ['required', 'string'],
+        ]);
+
+        $password = Hash::make("jornal001");
+        //criar codigo de verificacao
+        if ($request->acesso == "leitor") {
+            $code = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+        } else {
+            $code = null;
+        }
+
+        $data = [
+            'username' => $request->username,
+            'password' => $password,
+            'acesso' => $request->acesso,
+            'codigo' => $code,
+            'estado' => $request->estado,
+        ];
+
+        if (User::create($data)) {
+            return back()->with(['success' => "Feito com sucesso"]);
+        }
     }
 
     public function edit($id)

@@ -16,6 +16,7 @@
                             <th>Nome de usuário</th>
                             <th>Acesso</th>
                             <th>Código</th>
+                            <th>Operações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +25,9 @@
                                 <td>{{ $usuarios->username }}</td>
                                 <td>{{ $usuarios->acesso }}</td>
                                 <td>{{ $usuarios->codigo }}</td>
+                                <td>
+                                <a href="/usuario/edit/{{$usuarios->id}}" class="btn btn-primary">Editar</a>
+                                </td>
                             </tr>
                         @endforeach
 
