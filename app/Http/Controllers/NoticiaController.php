@@ -57,9 +57,10 @@ class NoticiaController extends Controller
             'descricao' => ['required', 'string', 'min:10'],
             'img' => ['required', 'mimes:jpg,jpeg,png,JPG,JPEG,PNG', 'max:10000'],
         ]);
+
         $id_user = Auth::user()->id;
         $path = null;
-        if ($request->hasFile('img') && $request->foto->isValid()) {
+        if ($request->hasFile('img') && $request->img->isValid()) {
             $path = $request->file('img')->store('img_noticias');
             $data['img'] = $path;
         }

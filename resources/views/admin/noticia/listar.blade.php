@@ -25,10 +25,11 @@
                                 <td>
                                     <img src="{{ asset($noticias->img) }}" alt="" style="height: 56px; width:56px" />
                                 </td>
-                                <td>{{ $noticias->titulo }}</td>
+                                <td>{{ $noticias->title }}</td>
                                 <td>{{ $noticias->estado }}</td>
                                 <td>
                                     <a href="/noticia/edit/{{ $noticias->id }}" class="btn btn-primary">Editar</a>
+                                    <a href="/noticia/divulgar/{{ $noticias->id }}" class="btn btn-warning">Divulgar</a>
                                 </td>
                             </tr>
                         @endforeach
