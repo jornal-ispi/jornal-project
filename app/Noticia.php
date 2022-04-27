@@ -12,6 +12,8 @@ class Noticia extends Model
         'id_user',
         'title',
         'description',
+        'description_min',
+        'estado_visible',
         'img',
         'estado',
     ];

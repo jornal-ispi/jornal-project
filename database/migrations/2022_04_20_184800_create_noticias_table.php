@@ -19,7 +19,9 @@ class CreateNoticiasTable extends Migration
             $table->bigInteger('id_user')->unsigned()->index();
             $table->string('title');
             $table->text('description')->nullable();
+            $table->text('description_min');
             $table->text('img')->nullable();
+            $table->string('estado_visible');
             $table->string('estado');
             $table->timestamps();
         });

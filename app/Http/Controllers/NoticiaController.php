@@ -55,6 +55,7 @@ class NoticiaController extends Controller
             'titulo' => ['required', 'string', 'min:10'],
             'estado' => ['required', 'string'],
             'descricao' => ['required', 'string', 'min:10'],
+            'description_min' => ['required', 'string', 'min:10'],
             'img' => ['required', 'mimes:jpg,jpeg,png,JPG,JPEG,PNG', 'max:10000'],
         ]);
 
@@ -69,8 +70,10 @@ class NoticiaController extends Controller
             'id_user' => $id_user,
             'title' => $request->titulo,
             'description' => $request->descricao,
+            'description_min' => $request->description_min,
             'img' => $path,
-            'estado' => "on",
+            'estado_visible'=>"not",
+            'estado' => $request->estado,
         ];
 
         if (Noticia::create($data)) {

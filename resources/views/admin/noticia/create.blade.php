@@ -55,6 +55,13 @@
                             <span class="text-danger">{{ $errors->first('estado') }}</span>
                         @endif
                     </div>
+
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="Rescalgo da Noticia" name="description_min" type="text" autofocus="">
+                        @if ($errors->has('description_min'))
+                            <span class="text-danger">{{ $errors->first('description_min') }}</span>
+                        @endif
+                    </div>
                     <div class="col-md-12">
 
                         {{ Form::label('descricao', 'Notícia Completa') }} <span class="text-danger">*</span>
