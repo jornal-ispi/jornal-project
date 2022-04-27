@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $noticias = Noticia::where('estado_visible', '=', "not")->get();
+        $noticias = Noticia::where('estado_visible', '!=', "not")->get();
         $data = [
             'title' => "Jornal ISPI",
             'menu' => "Home",
