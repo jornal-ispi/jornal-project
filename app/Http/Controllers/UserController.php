@@ -166,7 +166,7 @@ class UserController extends Controller
         $user = User::find($id_user);
         $data = [
             'title' => "Usuários",
-            'menu' => "Usuário",
+            'menu' => "Perfil",
             'type' => "admin",
             'getUser' => $user,
         ];
