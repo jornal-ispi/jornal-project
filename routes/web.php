@@ -31,7 +31,7 @@ Route::group(['prefix' => "usuario", 'middleware' => "auth.admin"], function () 
     Route::put('/update/{id}', "UserController@update");
 });
 
-Route::group(['prefix' => "noticia"], function () {
+Route::group(['prefix' => "noticia", 'middleware'=>"auth.adm.escr.edi"], function () {
     Route::get('/list', "NoticiaController@index");
     Route::get('/create', "NoticiaController@create");
     Route::post('/store', "NoticiaController@store");
@@ -49,7 +49,7 @@ Route::group(['prefix' => "chat"], function () {
     Route::get('/show/{id}', "ChatController@show");
 });
 
-Route::group(['prefix' => "subscritores"], function () {
+Route::group(['prefix' => "subscritores", 'middleware'=>"auth.admin"], function () {
     Route::get('/list', "SubscritorController@index");
     Route::post('/subscribe', "SubscritorController@subscribe");
     Route::get('/create', "SubscritorController@create");

@@ -44,8 +44,10 @@ if (Auth::check()) {
                                 @endif
                                 <a class="nav-link @if ($menu=='Chat' ) active @endif" aria-current="page" href="/chat/list">Chat
                                     ({{ $getSMS->count() }})</a>
-                                <a class="nav-link @if ($menu=='Subscritores' ) active @endif" aria-current="page"
-                                    href="/subscritores/list">Subscritores</a>
+                                @if (Auth::user()->acesso == 'admin')
+                                    <a class="nav-link @if ($menu=='Subscritores' ) active @endif" aria-current="page"
+                                        href="/subscritores/list">Subscritores</a>
+                                @endif
                                 <a class="nav-link @if ($menu=='Portefólio' ) active @endif" aria-current="page"
                                     href="/portefolio">Portefólio</a>
                                 <a class="nav-link @if ($menu=='Perfil' ) active @endif" aria-current="page" href="/user/perfil">Perfil</a>
