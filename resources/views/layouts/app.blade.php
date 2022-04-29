@@ -1,3 +1,8 @@
+@php
+use App\Http\Controllers\StaticController;
+$id_user = Auth::user()->id;
+$getSMS = StaticController::getSMS($id_user);
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +33,8 @@
                                 <a class="nav-link @if ($menu=='Home' ) active @endif" aria-current="page" href="/">Home</a>
                                 <a class="nav-link @if ($menu=='Usuários' ) active @endif" aria-current="page" href="/usuario/list">Usuários</a>
                                 <a class="nav-link @if ($menu=='Notícias' ) active @endif" aria-current="page" href="/noticia/list">Notícias</a>
-                                <a class="nav-link @if ($menu=='Chat' ) active @endif" aria-current="page" href="/chat/list">Chat</a>
+                                <a class="nav-link @if ($menu=='Chat' ) active @endif" aria-current="page" href="/chat/list">Chat
+                                    ({{ $getSMS->count() }})</a>
                                 <a class="nav-link @if ($menu=='Subscritores' ) active @endif" aria-current="page"
                                     href="/subscritores/list">Subscritores</a>
                                 <a class="nav-link @if ($menu=='Portefólio' ) active @endif" aria-current="page"

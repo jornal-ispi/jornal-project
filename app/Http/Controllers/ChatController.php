@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mensagem;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
@@ -13,7 +14,15 @@ class ChatController extends Controller
      */
     public function index()
     {
-        //
+        $mensagem = Mensagem::orderBy('id', 'desc')->paginate(10);
+        $data = [
+            'title' => "Chat",
+            'menu' => "Chat",
+            'type' => "admin",
+            'getMensagens' => $mensagem,
+        ];
+
+        return view('admin.chat.list', $data);
     }
 
     /**
