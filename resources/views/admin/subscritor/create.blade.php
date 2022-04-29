@@ -29,7 +29,7 @@
                 <legend>Dados</legend>
                 <div class="row">
                     <div class="col-md-4">
-                        <input class="form-control" placeholder="Título" name="codigo" type="text" autofocus="">
+                        <input class="form-control" placeholder="Código do Leitor" name="codigo" type="text" autofocus="">
                         @if ($errors->has('codigo'))
                             <span class="text-danger">{{ $errors->first('codigo') }}</span>
                         @endif
@@ -37,10 +37,10 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            {{ Form::label('ficheiro', 'Imagem') }} <span class="text-danger">*</span>
-                            {{ Form::file('ficheiro', null, ['placeholder' => 'Ficheiro', 'class' => 'form-control']) }}
+                            {{ Form::label('ficheiro', 'Ficheiro') }} <span class="text-danger">*</span>
+                            {{ Form::file('ficheiro', null, ['placeholder' => 'Jornal digital', 'class' => 'form-control']) }}
                             @if ($errors->has('ficheiro'))
-                                <span class="text-danger">{{ $errors->first('img') }}</span>
+                                <span class="text-danger">{{ $errors->first('ficheiro') }}</span>
                             @endif
                         </div>
                     </div>

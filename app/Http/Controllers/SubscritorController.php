@@ -56,15 +56,15 @@ class SubscritorController extends Controller
             'codigo' => ['required', 'integer'],
             'ficheiro' => ['required', 'mimes:pdf,docx,doc', 'max:10000'],
         ]);
-        
+
         $id_user = Auth::user()->id;
-        $user = User::where(['codigo' => $request->codigo])->get();
+        $user = User::where(['codigo' => $request->codigo])->first();
         if (!$user) {
             return back()->with(['error' => "Nao encontrou codigo"]);
         }
 
         $path = null;
-        if ($request->hasFile('ficheiro') && $request->img->isValid()) {
+        if ($request->hasFile('ficheiro') && $request->ficheiro->isValid()) {
             $path = $request->file('ficheiro')->store('jornal_digital');
         }
 
