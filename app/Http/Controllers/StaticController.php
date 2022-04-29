@@ -9,7 +9,7 @@ class StaticController extends Controller
 {
     public static function getSMS($id_user_receive)
     {
-        $mensagem = Mensagem::where(['id_user_receive' => $id_user_receive])->get();
+        $mensagem = Mensagem::where(['id_user_receive' => $id_user_receive, 'status_sms' => "on"])->get();
         return $mensagem;
     }
 }

@@ -42,7 +42,7 @@
 
                                 <td>{{ $mensagens->user_send->username }}</td>
                                 <td>{{ $mensagens->sms }}</td>
-                                <td>{{ $mensagens->estado }}</td>
+                                <td>{{ $mensagens->status_sms }}</td>
                                 <td>
                                     <a href="/chat/show/{{ $mensagens->id }}" class="btn btn-warning">Visualizar</a>
                                 </td>

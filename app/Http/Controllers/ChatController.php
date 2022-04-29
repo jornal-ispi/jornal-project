@@ -60,6 +60,7 @@ class ChatController extends Controller
         if (!$mensagem) {
             return back()->with(['error' => "Nao encontrou mensagem"]);
         }
+        $mensagem1 = Mensagem::find($id)->update(['status_sms' => "vista"]);
         $data = [
             'title' => "Chat",
             'menu' => "Chat",
