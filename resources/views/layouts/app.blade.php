@@ -1,7 +1,10 @@
 @php
 use App\Http\Controllers\StaticController;
-$id_user = Auth::user()->id;
-$getSMS = StaticController::getSMS($id_user);
+if (Auth::check()) {
+    $id_user = Auth::user()->id;
+    $getSMS = StaticController::getSMS($id_user);
+}
+
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -53,15 +56,16 @@ $getSMS = StaticController::getSMS($id_user);
             @yield('content')
         </div>
 
-        <div class="footer">
-            <hr />
-            <div class="row">
-                <div class="col-md-9">
-                    <h2>Jornal ISPI</h2>
-                </div>
-                <div class="col-md-3">
-                    <div class="row">
-                        @if ($menu == 'Home')
+        @if ($menu == 'Home')
+            <div class="footer">
+                <hr />
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2>Jornal ISPI</h2>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+
                             <div class="col-md-12">
                                 @if (session('error'))
                                     <div class="alert bg-danger" role="alert"><em
@@ -88,16 +92,17 @@ $getSMS = StaticController::getSMS($id_user);
                                 <button type="submit" class="btn btn-primary">Subscrever</button>
                                 {{ Form::close() }}
                             </div>
-                        @endif
+
+
+                        </div>
 
                     </div>
+                    <div class="col-md-12">
 
-                </div>
-                <div class="col-md-12">
-
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 
 
