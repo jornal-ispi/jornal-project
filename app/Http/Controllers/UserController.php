@@ -159,4 +159,18 @@ class UserController extends Controller
             return back()->with(['success' => "Feito com sucesso"]);
         }
     }
+
+    public function perfil()
+    {
+        $id_user = Auth::user()->id;
+        $user = User::find($id_user);
+        $data = [
+            'title' => "Usuários",
+            'menu' => "Usuário",
+            'type' => "admin",
+            'getUser' => $user,
+        ];
+
+        return view('user.perfil', $data);
+    }
 }
