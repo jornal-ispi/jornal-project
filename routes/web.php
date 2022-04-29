@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', "HomeController@index")->name('home')->middleware('auth');
-
+Route::get('/portefolio', "HomeController@portefolio");
 Route::group(['prefix' => "user"], function () {
     Route::get('/login', "UserController@login")->name('login')->middleware('guest');
     Route::post('/logar', "UserController@logar");
     Route::get('/logout', "UserController@logout")->name('logout');
 });
+
 
 Route::group(['prefix' => "usuario"], function () {
     Route::get('/list', "UserController@index");

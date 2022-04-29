@@ -36,4 +36,14 @@ class HomeController extends Controller
 
         return view("admin.single", $data);
     }
+
+    public function portefolio(){
+        $data = [
+            'title' => "Portefólio",
+            'menu' => "Portefolio",
+            'type' => "home",
+        ];
+
+        return view("admin.portefolio", $data);
+    }
 }
