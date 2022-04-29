@@ -29,7 +29,8 @@
                                 <a class="nav-link @if ($menu=='Usuários' ) active @endif" aria-current="page" href="/usuario/list">Usuários</a>
                                 <a class="nav-link @if ($menu=='Notícias' ) active @endif" aria-current="page" href="/noticia/list">Notícias</a>
                                 <a class="nav-link @if ($menu=='Chat' ) active @endif" aria-current="page" href="/chat/list">Chat</a>
-                                <a class="nav-link @if ($menu=='Subscritores' ) active @endif" aria-current="page" href="/subscritores/list">Subscritores</a>
+                                <a class="nav-link @if ($menu=='Subscritores' ) active @endif" aria-current="page"
+                                    href="/subscritores/list">Subscritores</a>
                                 <a class="nav-link @if ($menu=='Portefólio' ) active @endif" aria-current="page"
                                     href="/portefolio">Portefólio</a>
                                 <a class="nav-link" href="/user/logout" tabindex="-1" aria-disabled="true">Logout</a>
@@ -45,8 +46,42 @@
             @yield('content')
         </div>
 
-        <div class="rodape">
+        <div class="footer">
+            <hr />
+            <div class="row">
+                <div class="col-md-9">
+                    <h2>Jornal ISPI</h2>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @if (session('error'))
+                                <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>
+                                    {{ __(session('error')) }}
+                                    <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a>
+                                </div>
+                            @endif
 
+                            @if (session('success'))
+                                <div class="alert bg-success" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em>
+                                    {{ session('success') }}
+                                    <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-12">
+                            {{ Form::open(['method' => 'post', 'url' => '/subscritor/subscribe']) }}
+                            <input type="text" name="email" placeholder="Subscrever-se" class="form-control" />
+                            <button type="submit" class="btn btn-primary">Subscrever</button>
+                            {{ Form::close() }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    
+                </div>
+            </div>
         </div>
     </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Subscritor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubscritorController extends Controller
 {
@@ -89,5 +90,22 @@ class SubscritorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function subscribe(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email', 'unique:subscritors,email'],
+        ]);
+        $id_user = Auth::user()->id;
+        $data = [
+            'id_user' => $id_user,
+            'email' => $request->email,
+            'estado' => "on",
+        ];
+
+        if (Subscritor::create($data)) {
+            return back()->with(['success' => "Feitoc com sucesso"]);
+        }
     }
 }
