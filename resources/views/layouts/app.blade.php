@@ -34,8 +34,14 @@ if (Auth::check()) {
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
                                 <a class="nav-link @if ($menu=='Home' ) active @endif" aria-current="page" href="/">Home</a>
-                                <a class="nav-link @if ($menu=='Usuários' ) active @endif" aria-current="page" href="/usuario/list">Usuários</a>
-                                <a class="nav-link @if ($menu=='Notícias' ) active @endif" aria-current="page" href="/noticia/list">Notícias</a>
+                                @if (Auth::user()->acesso == 'admin')
+                                    <a class="nav-link @if ($menu=='Usuários' ) active @endif" aria-current="page"
+                                        href="/usuario/list">Usuários</a>
+                                @endif
+                                @if (Auth::user()->acesso != 'leitor')
+                                    <a class="nav-link @if ($menu=='Notícias' ) active @endif" aria-current="page"
+                                        href="/noticia/list">Notícias</a>
+                                @endif
                                 <a class="nav-link @if ($menu=='Chat' ) active @endif" aria-current="page" href="/chat/list">Chat
                                     ({{ $getSMS->count() }})</a>
                                 <a class="nav-link @if ($menu=='Subscritores' ) active @endif" aria-current="page"

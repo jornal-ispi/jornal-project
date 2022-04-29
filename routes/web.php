@@ -23,7 +23,7 @@ Route::group(['prefix' => "user"], function () {
 });
 
 
-Route::group(['prefix' => "usuario"], function () {
+Route::group(['prefix' => "usuario", 'middleware' => "auth.admin"], function () {
     Route::get('/list', "UserController@index");
     Route::get('/create', "UserController@create");
     Route::post('/store', "UserController@store");
