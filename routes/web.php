@@ -45,8 +45,7 @@ Route::group(['prefix' => "noticia"], function () {
 Route::group(['prefix' => "chat"], function () {
     Route::get('/list', "NoticiaController@index");
     Route::get('/create', "NoticiaController@create");
-    Route::post('/store', "UserController@store");
-    Route::get('/edit/{id}', "NoticiaController@edit");
+    Route::post('/store', "UserController@store");    Route::get('/edit/{id}', "NoticiaController@edit");
     Route::put('/update/{id}', "NoticiaController@update");
 });
 
@@ -54,4 +53,5 @@ Route::group(['prefix' => "subscritores"], function () {
     Route::get('/list', "SubscritorController@index");
     Route::post('/subscribe', "SubscritorController@subscribe");
     Route::get('/create', "SubscritorController@create");
+    Route::post('/store', "SubscritorController@store");
 });

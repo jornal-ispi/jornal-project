@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mensagem;
 use App\Subscritor;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,7 +52,33 @@ class SubscritorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'codigo' => ['required', 'integer'],
+            'ficheiro' => ['required', 'mimes:pdf,docx,doc', 'max:10000'],
+        ]);
+        
+        $id_user = Auth::user()->id;
+        $user = User::where(['codigo' => $request->codigo])->get();
+        if (!$user) {
+            return back()->with(['error' => "Nao encontrou codigo"]);
+        }
+
+        $path = null;
+        if ($request->hasFile('ficheiro') && $request->img->isValid()) {
+            $path = $request->file('ficheiro')->store('jornal_digital');
+        }
+
+        $data = [
+            'id_user_send' => $id_user,
+            'id_user_receive' => $user->id,
+            'sms' => $path,
+            'status_sms' => "on",
+            'estado' => "on",
+        ];
+
+        if (Mensagem::create($data)) {
+            return back()->with(['success' => "Enviado com sucesso"]);
+        }
     }
 
     /**
