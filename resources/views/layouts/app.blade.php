@@ -33,6 +33,8 @@
                                     href="/subscritores/list">Subscritores</a>
                                 <a class="nav-link @if ($menu=='Portefólio' ) active @endif" aria-current="page"
                                     href="/portefolio">Portefólio</a>
+                                    <a class="nav-link @if ($menu=='Perfil' ) active @endif" aria-current="page"
+                                    href="/perfil">Perfil</a>
                                 <a class="nav-link" href="/user/logout" tabindex="-1" aria-disabled="true">Logout</a>
                             </div>
                         </div>
