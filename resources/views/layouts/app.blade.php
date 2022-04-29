@@ -69,15 +69,18 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="col-md-12">
-                            {{ Form::open(['method' => 'post', 'url' => '/subscritores/subscribe']) }}
-                            <input type="text" name="email" placeholder="Subscrever-se" class="form-control" />
-                            @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                            @endif
-                            <button type="submit" class="btn btn-primary">Subscrever</button>
-                            {{ Form::close() }}
-                        </div>
+                        @if ($menu == 'Home')
+                            <div class="col-md-12">
+                                {{ Form::open(['method' => 'post', 'url' => '/subscritores/subscribe']) }}
+                                <input type="text" name="email" placeholder="Subscrever-se" class="form-control" />
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
+                                <button type="submit" class="btn btn-primary">Subscrever</button>
+                                {{ Form::close() }}
+                            </div>
+                        @endif
+
                     </div>
 
                 </div>
