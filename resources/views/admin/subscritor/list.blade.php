@@ -4,8 +4,8 @@
         <div class="col-md-12">
             <h4>{{ $menu }}</h4>
             <span style="float: right; text-align:right;">
-                <a href="/noticia/create" class="btn btn-success">
-                    Nova</a>
+                <a href="/subscritores/send" class="btn btn-success">
+                    Enviar</a>
             </span>
         </div>
         <div class="col-md-12">
@@ -28,28 +28,20 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Imagem</th>
-                            <th>Titulo</th>
+                            <th>Usuário</th>
+                            <th>Email</th>
                             <th>Estado</th>
                             <th>Operações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($getNoticias as $noticias)
+                        @foreach ($getSubscritors as $subscritor)
                             <tr>
-                                <td>
-                                    <img src="{{ asset($noticias->img) }}" alt="" style="height: 56px; width:56px" />
-                                </td>
-                                <td>{{ $noticias->title }}</td>
-                                <td>{{ $noticias->estado }}</td>
-                                <td>
-                                    <a href="/noticia/edit/{{ $noticias->id }}" class="btn btn-primary">Editar</a>
-                                    @if ($noticias->estado_visible == 'not')
-                                        <a href="/noticia/divulgar/{{ $noticias->id }}"
-                                            class="btn btn-warning">Divulgar</a>
-                                    @endif
-                                    <a href="/noticia/destroy/{{ $noticias->id }}" class="btn btn-danger">Eliminar</a>
-                                </td>
+
+                                <td>{{ $subscritor->usuarios->username }}</td>
+                                <td>{{ $subscritor->email }}</td>
+                                <td>{{ $subscritor->estado }}</td>
+                                <td></td>
                             </tr>
                         @endforeach
 
@@ -57,7 +49,7 @@
                 </table>
             </div>
             <div class="paginate">
-                {{ $getNoticias->links() }}
+                {{ $getSubscritors->links() }}
             </div>
         </div>
     </div>
