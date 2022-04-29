@@ -70,8 +70,11 @@
                             @endif
                         </div>
                         <div class="col-md-12">
-                            {{ Form::open(['method' => 'post', 'url' => '/subscritor/subscribe']) }}
+                            {{ Form::open(['method' => 'post', 'url' => '/subscritores/subscribe']) }}
                             <input type="text" name="email" placeholder="Subscrever-se" class="form-control" />
+                            @if ($errors->has('email'))
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
                             <button type="submit" class="btn btn-primary">Subscrever</button>
                             {{ Form::close() }}
                         </div>
@@ -79,7 +82,7 @@
 
                 </div>
                 <div class="col-md-12">
-                    
+
                 </div>
             </div>
         </div>
