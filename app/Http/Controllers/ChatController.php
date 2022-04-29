@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mensagem;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,11 +57,11 @@ class ChatController extends Controller
 
         $id_user_receive = 1;
         $id_user_send = Auth::user()->id;
-
+        $user = User::find($id_user_send);
         $data = [
             'id_user_send' => $id_user_send,
             'id_user_receive' => $id_user_receive,
-            'sms' => $request->sms,
+            'sms' => $request->sms . " :: " . $user->codigo,
             'status_sms' => "on",
             'estado' => "on",
         ];
