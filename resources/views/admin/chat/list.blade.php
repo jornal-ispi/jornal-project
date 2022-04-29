@@ -5,7 +5,7 @@
             <h4>{{ $menu }}</h4>
             @if (Auth::user()->acesso == 'leitor')
                 <span style="float: right; text-align:right;">
-                    <a href="/subscritores/create" class="btn btn-success">
+                    <a href="/chat/create" class="btn btn-success">
                         Enviar</a>
                 </span>
             @endif
