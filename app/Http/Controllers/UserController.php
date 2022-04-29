@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -105,10 +106,15 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        $user = User::find($id);
+        if (!$user) {
+            return back()->with(['error' => "Não encontrou usuario"]);
+        }
         $data = [
             'title' => "Usuários",
             'menu' => "Usuário",
             'type' => "admin",
+            'getUsuario' => $user,
         ];
 
         return view('admin.usuario.edit', $data);
@@ -116,5 +122,41 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+        if (!$user) {
+            return back()->with(['error' => "Não encontrou usuario"]);
+        }
+
+        $request->validate([
+            'username' => ['required', 'string', 'min:6',],
+            'acesso' => ['required', 'string'],
+            'estado' => ['required', 'string'],
+        ]);
+
+        if ($user->username != $request->username) {
+            $request->validate([
+                'username' => ['required', 'string', 'min:6', 'unique:usuarios,username'],
+            ]);
+        }
+
+        //criar codigo de verificacao se mudar para leitor
+        if ($user->acesso != $request->acesso) {
+            if ($request->acesso == "leitor") {
+                $code = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+            }
+        } else {
+            $code = null;
+        }
+
+        $data = [
+            'username' => $request->username,
+            'acesso' => $request->acesso,
+            'codigo' => $code,
+            'estado' => $request->estado,
+        ];
+
+        if (User::find($id)->update($data)) {
+            return back()->with(['success' => "Feito com sucesso"]);
+        }
     }
 }

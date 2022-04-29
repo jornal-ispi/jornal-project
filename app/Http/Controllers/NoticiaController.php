@@ -72,7 +72,7 @@ class NoticiaController extends Controller
             'description' => $request->descricao,
             'description_min' => $request->description_min,
             'img' => $path,
-            'estado_visible'=>"not",
+            'estado_visible' => "not",
             'estado' => $request->estado,
         ];
 
@@ -100,7 +100,18 @@ class NoticiaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $noticia = Noticia::find($id);
+        if (!$noticia) {
+            return back()->with(['Nao encontrou']);
+        }
+        $data = [
+            'title' => "Notícias",
+            'menu' => "Notícias",
+            'type' => "admin",
+            'getNoticia' => $noticia,
+        ];
+
+        return view('admin.noticia.edit', $data);
     }
 
     /**
