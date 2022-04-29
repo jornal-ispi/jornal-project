@@ -33,7 +33,13 @@ class SubscritorController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => "Subscritores",
+            'menu' => "Subscritores",
+            'type' => "admin",
+        ];
+
+        return view('admin.subscritor.create', $data);
     }
 
     /**

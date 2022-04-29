@@ -53,4 +53,5 @@ Route::group(['prefix' => "chat"], function () {
 Route::group(['prefix' => "subscritores"], function () {
     Route::get('/list', "SubscritorController@index");
     Route::post('/subscribe', "SubscritorController@subscribe");
+    Route::get('/create', "SubscritorController@create");
 });

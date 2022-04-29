@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <h4>{{ $menu }}</h4>
             <span style="float: right; text-align:right;">
-                <a href="/subscritores/send" class="btn btn-success">
+                <a href="/subscritores/create" class="btn btn-success">
                     Enviar</a>
             </span>
         </div>
