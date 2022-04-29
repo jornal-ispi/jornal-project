@@ -9,6 +9,21 @@
             </span>
         </div>
         <div class="col-md-12">
+            @if (session('error'))
+                <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>
+                    {{ __(session('error')) }}
+                    <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert bg-success" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em>
+                    {{ session('success') }}
+                    <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a>
+                </div>
+            @endif
+        </div>
+        <div class="col-md-12">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
                     <thead>

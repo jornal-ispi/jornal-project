@@ -123,7 +123,44 @@ class NoticiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $noticia = Noticia::find($id);
+        if (!$noticia) {
+            return back()->with(['Nao encontrou']);
+        }
+        $request->validate([
+            'titulo' => ['required', 'string', 'min:10'],
+            'estado' => ['required', 'string'],
+            'descricao' => ['required', 'string', 'min:10'],
+            'description_min' => ['required', 'string', 'min:10'],
+
+        ]);
+
+        $id_user = Auth::user()->id;
+        $path = $noticia->img;
+        if ($request->hasFile('img') && $request->img->isValid()) {
+            $request->validate([
+                'img' => ['required', 'mimes:jpg,jpeg,png,JPG,JPEG,PNG', 'max:10000'],
+            ]);
+
+            if ($noticia->img != "" && file_exists($noticia->img)) {
+                unlink($noticia->img);
+            }
+            $path = $request->file('img')->store('img_noticias');
+            $data['img'] = $path;
+        }
+
+        $data = [
+            'id_user' => $id_user,
+            'title' => $request->titulo,
+            'description' => $request->descricao,
+            'description_min' => $request->description_min,
+            'img' => $path,
+            'estado' => $request->estado,
+        ];
+
+        if (Noticia::find($id)->update($data)) {
+            return back()->with(['success' => "Feito com sucesso"]);
+        }
     }
 
     /**
@@ -134,6 +171,29 @@ class NoticiaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $noticia = Noticia::find($id);
+        if (!$noticia) {
+            return back()->with(['Nao encontrou']);
+        }
+
+        if ($noticia->img != "" && file_exists($noticia->img)) {
+            unlink($noticia->img);
+        }
+
+        if (Noticia::find($id)->delete()) {
+            return back()->with(['success' => "Eliminada com sucesso"]);
+        }
+    }
+
+    public function divulgar($id)
+    {
+        $noticia = Noticia::find($id);
+        if (!$noticia) {
+            return back()->with(['Nao encontrou']);
+        }
+
+        if (Noticia::find($id)->update(['estado_visible' => "publicada"])) {
+            return back()->with(['success' => "Noticia divulgada com sucesso"]);
+        }
     }
 }
