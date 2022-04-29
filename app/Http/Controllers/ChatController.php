@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mensagem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
@@ -14,7 +15,8 @@ class ChatController extends Controller
      */
     public function index()
     {
-        $mensagem = Mensagem::orderBy('id', 'desc')->paginate(10);
+        $id_user = Auth::user()->id;
+        $mensagem = Mensagem::orderBy('id', 'desc')->where(['id_user_receive' => $id_user])->paginate(10);
         $data = [
             'title' => "Chat",
             'menu' => "Chat",
@@ -54,7 +56,17 @@ class ChatController extends Controller
      */
     public function show($id)
     {
-        //
+        $mensagem = Mensagem::find($id);
+        if (!$mensagem) {
+            return back()->with(['error' => "Nao encontrou mensagem"]);
+        }
+        $data = [
+            'title' => "Chat",
+            'menu' => "Chat",
+            'type' => "admin",
+            'getMensagem' => $mensagem,
+        ];
+        return view('admin.chat.show', $data);
     }
 
     /**

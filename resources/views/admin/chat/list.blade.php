@@ -3,10 +3,12 @@
     <div class="row">
         <div class="col-md-12">
             <h4>{{ $menu }}</h4>
-            <span style="float: right; text-align:right;">
-                <a href="/subscritores/create" class="btn btn-success">
-                    Enviar</a>
-            </span>
+            @if (Auth::user()->acesso == 'leitor')
+                <span style="float: right; text-align:right;">
+                    <a href="/subscritores/create" class="btn btn-success">
+                        Enviar</a>
+                </span>
+            @endif
         </div>
         <div class="col-md-12">
             @if (session('error'))

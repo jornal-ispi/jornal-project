@@ -46,6 +46,7 @@ Route::group(['prefix' => "chat"], function () {
     Route::get('/list', "ChatController@index");
     Route::get('/create', "ChatController@create");
     Route::post('/store', "ChatController@store");
+    Route::get('/show/{id}', "ChatController@show");
 });
 
 Route::group(['prefix' => "subscritores"], function () {
