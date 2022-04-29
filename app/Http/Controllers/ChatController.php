@@ -34,7 +34,12 @@ class ChatController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => "Chat",
+            'menu' => "Chat",
+            'type' => "admin",
+        ];
+        return view('admin.chat.create', $data);
     }
 
     /**
@@ -45,7 +50,24 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'sms' => ['required', 'string', 'min:3'],
+        ]);
+
+        $id_user_receive = 1;
+        $id_user_send = Auth::user()->id;
+
+        $data = [
+            'id_user_send' => $id_user_send,
+            'id_user_receive' => $id_user_receive,
+            'sms' => $request->sms,
+            'status_sms' => "on",
+            'estado' => "on",
+        ];
+
+        if (Mensagem::create($data)) {
+            return back()->with(['success' => "Feito com sucesso"]);
+        }
     }
 
     /**
@@ -102,5 +124,6 @@ class ChatController extends Controller
     public function destroy($id)
     {
         //
+
     }
 }

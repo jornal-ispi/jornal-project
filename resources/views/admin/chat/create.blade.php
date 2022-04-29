@@ -30,7 +30,7 @@
                 <div class="row">
 
                     <div class="col-md-4">
-                        <textarea name="sms" cols="30" rows="10" placeholder="Mensagem"></textarea>
+                        <textarea name="sms" cols="30" rows="10" placeholder="Mensagem" class="form-control"></textarea>
                         @if ($errors->has('sms'))
                             <span class="text-danger">{{ $errors->first('sms') }}</span>
                         @endif
