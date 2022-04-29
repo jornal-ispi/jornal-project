@@ -8,7 +8,7 @@
     <title>{{ $title }}</title>
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap5/css/bootstrap.css') }}" />
-    
+
 </head>
 
 <body>
@@ -27,8 +27,9 @@
                             <div class="navbar-nav">
                                 <a class="nav-link @if ($menu=='Home' ) active @endif" aria-current="page" href="/">Home</a>
                                 <a class="nav-link @if ($menu=='Usuários' ) active @endif" aria-current="page" href="/usuario/list">Usuários</a>
-                                <a class="nav-link @if ($menu=='Notícia' ) active @endif" aria-current="page" href="/noticia/list">Notícia</a>
+                                <a class="nav-link @if ($menu=='Notícias' ) active @endif" aria-current="page" href="/noticia/list">Notícias</a>
                                 <a class="nav-link @if ($menu=='Chat' ) active @endif" aria-current="page" href="/chat/list">Chat</a>
+                                <a class="nav-link @if ($menu=='Subscritores' ) active @endif" aria-current="page" href="/subscritores/list">Subscritores</a>
                                 <a class="nav-link @if ($menu=='Portefólio' ) active @endif" aria-current="page"
                                     href="/portefolio">Portefólio</a>
                                 <a class="nav-link" href="/user/logout" tabindex="-1" aria-disabled="true">Logout</a>

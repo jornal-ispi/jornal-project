@@ -48,3 +48,8 @@ Route::group(['prefix' => "chat"], function () {
     Route::get('/edit/{id}', "NoticiaController@edit");
     Route::put('/update/{id}', "NoticiaController@update");
 });
+
+Route::group(['prefix' => "subscritores"], function () {
+    Route::get('/list', "SubscritorController@index");
+
+});
