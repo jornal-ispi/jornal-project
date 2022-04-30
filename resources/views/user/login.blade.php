@@ -21,7 +21,7 @@
             </div>
         @endif
         {{ Form::open(['method' => 'post', 'name' => 'formLogin', 'url' => '/user/logar']) }}
-
+        @csrf
         <fieldset>
             <legend>Iniciar Sessão</legend>
             <div class="row">

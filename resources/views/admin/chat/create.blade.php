@@ -25,6 +25,7 @@
         </div>
         <div class="col-md-12">
             {{ Form::open(['method' => 'post', 'name' => 'formLogin', 'url' => '/chat/store', 'enctype' => 'multipart/form-data']) }}
+            @csrf
             <fieldset>
                 <legend>Dados</legend>
                 <div class="row">
