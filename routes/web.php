@@ -31,15 +31,17 @@ Route::group(['prefix' => "usuario", 'middleware' => "auth.admin"], function () 
     Route::put('/update/{id}', "UserController@update");
 });
 
-Route::group(['prefix' => "noticia", 'middleware'=>"auth.adm.escr.edi"], function () {
-    Route::get('/list', "NoticiaController@index");
-    Route::get('/create', "NoticiaController@create");
-    Route::post('/store', "NoticiaController@store");
-    Route::get('/edit/{id}', "NoticiaController@edit");
-    Route::put('/update/{id}', "NoticiaController@update");
+Route::group(['prefix' => "noticia", 'middleware' => "auth"], function () {
+    Route::get('/list', "NoticiaController@index")->middleware('auth.adm.escr.edi');
+    Route::get('/create', "NoticiaController@create")->middleware('auth.adm.escr.edi');
+    Route::post('/store', "NoticiaController@store")->middleware('auth.adm.escr.edi');
+    Route::get('/edit/{id}', "NoticiaController@edit")->middleware('auth.adm.escr.edi');
+    Route::put('/update/{id}', "NoticiaController@update")->middleware('auth.adm.escr.edi');
     Route::get('/single/{id}', "HomeController@single");
-    Route::get('/destroy/{id}', "NoticiaController@destroy");
-    Route::get('/divulgar/{id}', "NoticiaController@divulgar");
+    Route::get('/destroy/{id}', "NoticiaController@destroy")->middleware('auth.adm.escr.edi');
+    Route::get('/divulgar/{id}', "NoticiaController@divulgar")->middleware('auth.adm.escr.edi');
+    Route::get('/habilitar/{id}', "NoticiaController@habilitar")->middleware('auth.adm.escr.edi');
+    Route::get('/ocultar/{id}', "NoticiaController@ocultar")->middleware('auth.adm.escr.edi');
 });
 
 Route::group(['prefix' => "chat"], function () {
@@ -49,7 +51,7 @@ Route::group(['prefix' => "chat"], function () {
     Route::get('/show/{id}', "ChatController@show");
 });
 
-Route::group(['prefix' => "subscritores", 'middleware'=>"auth.admin"], function () {
+Route::group(['prefix' => "subscritores", 'middleware' => "auth.admin"], function () {
     Route::get('/list', "SubscritorController@index");
     Route::post('/subscribe', "SubscritorController@subscribe");
     Route::get('/create', "SubscritorController@create");

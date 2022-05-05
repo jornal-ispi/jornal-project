@@ -4,8 +4,11 @@
         <div class="col-md-12">
             <h4>{{ $menu }}</h4>
             <span style="float: right; text-align:right;">
-                <a href="/noticia/create" class="btn btn-success">
-                    Nova</a>
+                @if (Auth::user()->acesso == 'admin' || Auth::user()->acesso == 'escritor')
+                    <a href="/noticia/create" class="btn btn-success">
+                        Nova</a>
+                @endif
+
             </span>
         </div>
         <div class="col-md-12">
@@ -43,12 +46,29 @@
                                 <td>{{ $noticias->title }}</td>
                                 <td>{{ $noticias->estado }}</td>
                                 <td>
-                                    <a href="/noticia/edit/{{ $noticias->id }}" class="btn btn-primary">Editar</a>
-                                    @if ($noticias->estado_visible == 'not')
-                                        <a href="/noticia/divulgar/{{ $noticias->id }}"
-                                            class="btn btn-warning">Divulgar</a>
+                                    @if (Auth::user()->acesso == 'editor' || Auth::user()->acesso == 'admin')
+                                        <a href="/noticia/edit/{{ $noticias->id }}" class="btn btn-primary">Editar</a>
                                     @endif
-                                    <a href="/noticia/destroy/{{ $noticias->id }}" class="btn btn-danger">Eliminar</a>
+
+                                    @if (Auth::user()->acesso == 'admin')
+                                        @if ($noticias->estado_visible == 'not')
+                                            <a href="/noticia/divulgar/{{ $noticias->id }}"
+                                                class="btn btn-warning">Divulgar</a>
+                                        @endif
+                                    @endif
+                                    
+                                    @if (Auth::user()->acesso == 'admin')
+
+                                        @if ($noticias->estado == 'on')
+                                            <a href="/noticia/ocultar/{{ $noticias->id }}"
+                                                class="btn btn-info">Ocultar</a>
+                                        @else
+                                            <a href="/noticia/habilitar/{{ $noticias->id }}"
+                                                class="btn btn-warning">Habilitar</a>
+                                        @endif
+                                        <a href="/noticia/destroy/{{ $noticias->id }}"
+                                            class="btn btn-danger">Eliminar</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

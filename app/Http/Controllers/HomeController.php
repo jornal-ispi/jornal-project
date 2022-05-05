@@ -9,7 +9,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $noticias = Noticia::where('estado_visible', '!=', "not")->get();
+        $noticias = Noticia::where('estado_visible', '!=', "not")
+            ->where('estado', "on")->get();
         $data = [
             'title' => "Jornal ISPI",
             'menu' => "Home",
@@ -37,7 +38,8 @@ class HomeController extends Controller
         return view("admin.single", $data);
     }
 
-    public function portefolio(){
+    public function portefolio()
+    {
         $data = [
             'title' => "Portefólio",
             'menu' => "Portefolio",

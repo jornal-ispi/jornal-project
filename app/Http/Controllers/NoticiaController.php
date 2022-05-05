@@ -196,4 +196,26 @@ class NoticiaController extends Controller
             return back()->with(['success' => "Noticia divulgada com sucesso"]);
         }
     }
+
+    public function habilitar($id){
+        $noticia = Noticia::find($id);
+        if (!$noticia) {
+            return back()->with(['Nao encontrou']);
+        }
+
+        if (Noticia::find($id)->update(['estado' => "on"])) {
+            return back()->with(['success' => "Noticia habilitada com sucesso"]);
+        }
+    }
+
+    public function ocultar($id){
+        $noticia = Noticia::find($id);
+        if (!$noticia) {
+            return back()->with(['Nao encontrou']);
+        }
+
+        if (Noticia::find($id)->update(['estado' => "off"])) {
+            return back()->with(['success' => "Noticia ocultada com sucesso"]);
+        }
+    }
 }
