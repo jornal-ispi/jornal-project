@@ -8,6 +8,7 @@
             <hr />
         </div>
         <div class="col-md-8">
+            <b>Acesso:</b> {{ strtoupper($getUser->acesso) }}<br />
             <b>Nome de Usuário:</b> {{ $getUser->username }}<br />
             <b>Código:</b> {{ $getUser->codigo }}<br />
             <b>Estado:</b> {{ $getUser->estado }}<br />
